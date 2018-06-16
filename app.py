@@ -16,25 +16,6 @@ bot = ChatBot(
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
             'threshold': 0.25,
             'default_response': u"ขอโทษนะครับ BuffBot สับสนครับ"
-        },
-        {
-            'import_path': 'chatterbot.logic.TimeLogicAdapter',
-            'positive': [
-                u"อะไรคืืือเวลาตอนนี้",
-                u"ขอเวลา",
-                u"ขอเวลาตอนนี้",
-                u"ขอเวลาในตอนนี้",
-                u"ขอเวลาในตอนนี้หน่อย",
-                u"ขอเวลาตอนนี้หน่อย"
-                u"ขอเวลาหน่อย",
-                u"เวลาตอนนี้คืออะไร",
-                u"เวลาตอนนี้คือเท่าไหร่",
-                u"ตอนนี้เวลาเท่าไหร่"
-            ],
-            'negative': [
-                u"อะไรคือเวลา",
-                u"เวลาคืออะไร"
-            ]
         }
     ],
 )
