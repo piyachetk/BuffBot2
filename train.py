@@ -16,7 +16,8 @@ try:
 
     if corpus_name == '-all':
         for filename in os.listdir('./data'):
-            english_bot.train("./data/" + filename)
+            if filename.endswith('.yml'):
+                english_bot.train("./data/" + filename)
     else:
         english_bot.train("./data/" + corpus_name)
 
