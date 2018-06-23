@@ -16,7 +16,7 @@ bot = ChatBot(
         },
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
-            'threshold': 0.80,
+            'threshold': 0.25,
             'default_response': "[Low Confidence Error]"  # Until we figure out a permanent fix
         }
     ],
