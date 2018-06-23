@@ -10,12 +10,14 @@ bot = ChatBot(
     storage_adapter="chatterbot.storage.SQLStorageAdapter",
     logic_adapters=[
         {
-            'import_path': 'chatterbot.logic.BestMatch'
+            'import_path': 'chatterbot.logic.BestMatch',
+            "statement_comparison_function": "comparisons.synset_distance_thai",
+            "response_selection_method": "chatterbot.response_selection.get_first_response"
         },
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
-            'threshold': 0.25,
-            'default_response': u"ขอโทษนะครับ BuffBot สับสนครับ"
+            'threshold': 0.80,
+            'default_response': "[Low Confidence Error]"  # Until we figure out a permanent fix
         }
     ],
 )
@@ -29,7 +31,11 @@ def home():
 @app.route("/get")
 def get_bot_response():
     user_text = request.args.get('msg').encode("utf-8")
-    return unicode(bot.get_response(user_text))
+    response = unicode(bot.get_response(user_text))
+
+    response = (response, u'ขอโทษนะครับ BuffBot สับสนครับ')[response == '[Low Confidence Error]']  # Quick Fix
+
+    return response
 
 
 if __name__ == "__main__":

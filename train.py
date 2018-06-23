@@ -1,4 +1,5 @@
 import sys
+import os
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
@@ -12,7 +13,12 @@ try:
         corpus_name = sys.argv[1]
 
     english_bot.set_trainer(ChatterBotCorpusTrainer)
-    english_bot.train("./data/" + corpus_name)
+
+    if corpus_name == '-all':
+        for filename in os.listdir('./data'):
+            english_bot.train("./data/" + filename)
+    else:
+        english_bot.train("./data/" + corpus_name)
 
 except KeyboardInterrupt:
     sys.exit(0)
