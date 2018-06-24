@@ -61,8 +61,8 @@ class SynsetDistanceThai:
         from pythainlp.tokenize import word_tokenize
         from pythainlp.corpus import wordnet
 
-        tokens1 = word_tokenize(statement.text.lower())
-        tokens2 = word_tokenize(other_statement.text.lower())
+        tokens1 = word_tokenize(statement.text.lower(), engine='newmm')
+        tokens2 = word_tokenize(other_statement.text.lower(), engine='newmm')
 
         # Remove all stop words from the list of word tokens
         tokens1 = remove_stopwords(tokens1)
