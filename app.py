@@ -16,8 +16,8 @@ bot = ChatBot(
         },
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
-            'threshold': 0.25,
-            'default_response': "[Low Confidence Error]"  # Until we figure out a permanent fix
+            'threshold': 0.5,
+            'default_response': "ขอโทษนะครับ BuffBot สับสนครับ"
         }
     ],
 )
@@ -30,11 +30,8 @@ def home():
 
 @app.route("/get")
 def get_bot_response():
-    user_text = request.args.get('msg').encode("utf-8")
-    response = unicode(bot.get_response(user_text))
-
-    response = (response, u'ขอโทษนะครับ BuffBot สับสนครับ')[response == '[Low Confidence Error]']  # Quick Fix
-
+    user_text = request.args.get('msg')
+    response = str(bot.get_response(user_text))
     return response
 
 

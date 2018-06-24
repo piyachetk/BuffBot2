@@ -7,8 +7,8 @@ english_bot = ChatBot("BuffBot", storage_adapter="chatterbot.storage.SQLStorageA
 
 try:
 
-    if sys.argv.count < 2:
-        corpus_name = raw_input("Please enter corpus file name: ")
+    if len(sys.argv) < 2:
+        corpus_name = input("Please enter corpus file name: ")
     else:
         corpus_name = sys.argv[1]
 
