@@ -40,6 +40,7 @@ elif args.type == 'txt':
                 lines = [line.rstrip('\n') for line in open(filename)]
                 english_bot.train(lines)
     else:
-        english_bot.train("./data/" + args.file)
+        lines = [line.rstrip('\n') for line in open("./data/" + args.file)]
+        english_bot.train(lines)
 else:
     print("Invalid source type")
